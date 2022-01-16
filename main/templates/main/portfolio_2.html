@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'main/css/index.css' %}">
+{% endblock %}
+
+
+{% block page_header %}
+{% include 'includes/page_header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="portfolio-hero-img"></div>
+<div class="container-fluid">
+
+    <div class="container content-container d-flex justify-content-center">
+        <div class="row mt-auto">
+            <div class="col-12">
+                <h1 class="portfolio-title">PORTFOLIO</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="spacer"></div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-10 d-flex justify-content-center">
+            <ul class="list-inline list-unstyled">
+                {% if on_page %}
+                <li class="list-inline-item">
+                    <a class="portfolio-link" href="{% url 'portfolio' %}">Fashion</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row gallery-row d-flex justify-content-center">
+            <section id="gallery">
+                {% for painting in paintings %}
+                {% if user.is_superuser %}
+                <a href="#"><img src="{{ painting.image.url }}" alt="{{ painting.alt }}"></a>
+                {% else %}
+                <img src="{{ painting.image.url }}" alt="{{ painting.alt }}">
+                {% endif %}
+                <div class="row"></div>
+                {% endfor %}
+            </section>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

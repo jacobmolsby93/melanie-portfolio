@@ -24,10 +24,31 @@
     </div>
 
     <div class="spacer"></div>
-
-    <section id="gallery">
-        
-    </section>
+    <div class="row d-flex justify-content-center">
+        <div class="col-10 d-flex justify-content-center">
+            <ul class="list-inline list-unstyled">
+                {% if on_page %}
+                <li class="list-inline-item">
+                    <a class="portfolio-link" href="{% url 'portfolio2' %}">Beauty</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row gallery-row d-flex justify-content-center">
+            <section id="gallery">
+                {% for image in images %}
+                {% if user.is_superuser %}
+                <a href="#"><img src="{{ image.image.url }}" alt="{{ item.alt }}"></a>
+                {% else %}
+                <img src="{{ image.image.url }}" alt="{{ image.alt }}">
+                {% endif %}
+                <div class="row"></div>
+                {% endfor %}
+            </section>
+        </div>
+    </div>
 
 </div>
 {% endblock %}
