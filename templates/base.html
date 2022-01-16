@@ -1,4 +1,3 @@
-
 {% load static %}
 
 <!DOCTYPE html>
@@ -9,7 +8,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta description="">
-    <meta keywords="Graphic dessigner, illustrator, art, portraits, freelance, design, design studio, denpassar, bali, freelance designer, graphical illustrator, Canggu">
+    <meta
+        keywords="Graphic dessigner, illustrator, art, portraits, freelance, design, design studio, denpassar, bali, freelance designer, graphical illustrator, Canggu">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% endblock %}
 
@@ -40,7 +40,18 @@
     <title>MELANIE RIEDER</title>
     <link rel="icon" href="{{ MEDIA_URL }}mr-logo.png" type="image/x-icon">
 </head>
+
 <body>
-    
+    <div class="container-fluid">
+        
+        {% block page_header %}
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+
+
+    </div>
 </body>
+
 </html>

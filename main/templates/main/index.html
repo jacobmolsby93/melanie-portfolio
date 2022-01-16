@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'main/css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="background-img d-none d-sm-block"></div>
+    <div class="background-img-mobile d-block d-sm-none"></div>
+    <h1 class="mt-2 ms-3">MELANIE RIEDER</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 landing-nav">
+                <nav>
+                    <ul class="list-unstyled">
+                        <li class="list-item">
+                            <a class="landing-link" href="#">Portfolio</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="landing-link" href="#">Bio/Contact</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="landing-link" href="#">Share</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="landing-icon" href="https://www.instagram.com/makeupby_melanierieder/"
+                                target="_blank"><i class="fab fa-instagram"></i></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

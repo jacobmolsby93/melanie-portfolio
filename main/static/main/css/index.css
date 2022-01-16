@@ -1,0 +1,50 @@
+.background-img {
+    position: absolute;
+    top: 0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    background: url('/media/landing-image.jpeg') no-repeat center center;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+.background-img-mobile {
+    position: absolute;
+    top: 0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    background: url('/media/mobile-landing.png') no-repeat center center;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+
+
+/* Navigation */ 
+.landing-link,
+.landing-icon {
+    font-size: 1.5rem;
+    text-decoration: none;
+    letter-spacing: .5px;
+    color: #000;
+    transition: .6s;
+}
+
+.landing-link:hover,
+.landing-icon:hover {
+    color: #555;
+}
+
+.landing-link {
+    border-bottom: 2px solid #000;
+}
+
+.landing-nav {
+    margin-top: 10%;
+}
