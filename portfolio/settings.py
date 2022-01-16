@@ -29,6 +29,7 @@ ALLOWED_HOSTS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
+    'https://8000-jacobmolsby93-melaniepor-t40xp862yg1.ws-us27.gitpod.io'
 ]
 
 CORS_ALLOW_CREDENTIALS = True
