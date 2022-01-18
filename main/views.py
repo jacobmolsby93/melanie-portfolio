@@ -100,7 +100,7 @@ def delete_image(request, image_id):
     image = get_object_or_404(Image, pk=image_id)
     image.delete()
     messages.success(request, 'Image deleted!')
-    return redirect(reverse('home'))
+    return redirect(reverse('portfolio'))
 
 def add_image(request):
     """
@@ -185,7 +185,7 @@ def add_painting(request):
     return render(request, template_name, context)
 
 @login_required
-def delete_image(request, painting_id):
+def delete_painting(request, painting_id):
     """
     Delete an Image
     """

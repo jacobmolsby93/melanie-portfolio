@@ -44,28 +44,33 @@
         </div>
     </div>
     <div class="container-fluid">
-        <div class="row gallery-row mt-3">
+        <div class="row gallery-row">
             <section id="gallery2">
                 {% for painting in paintings %}
                 {% if user.is_superuser %}
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 mt-3">
                         <div class="card">
                             <a href="{% url 'edit_painting' painting.id %}">
                                 <img class="card-img card-img-paint" src="{{ painting.image.url }}" alt="{{ painting.alt }}}">
-
-                                <div class="overlay">
-                                    <h3 class="card-title mt-4 ms-4">Info</h3>
+                                <div class="overlay paint-overlay">
+                                    <h3 class="card-title mt-4 ms-4">Photo Info</h3>
                                     <div class="card-body content">
+                                        {% if painting.model != None %}
                                         <h6>
                                             Model: {{ painting.model }}
                                         </h6>
+                                        {% endif %}
+                                        {% if painting.photographer != None %}
                                         <h6>
                                             Photographer: {{ painting.photographer }}
                                         </h6>
+                                        {% endif %}
+                                        {% if painting.designer != None %}
                                         <h6>
                                             Designer: {{ painting.designer }}
                                         </h6>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </a>
@@ -74,21 +79,27 @@
                 </div>
                 {% else %}
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 mt-3">
                         <div class="card">
                             <img class="card-img card-img-paint" src="{{ painting.image.url }}" alt="{{ painting.alt }}}">
                             <div class="overlay">
                                 <h3 class="card-title mt-4 ms-4">Info</h3>
                                 <div class="card-body content">
+                                    {% if painting.model != None %}
                                     <h6>
                                         Model: {{ painting.model }}
                                     </h6>
+                                    {% endif %}
+                                    {% if painting.photographer != None %}
                                     <h6>
                                         Photographer: {{ painting.photographer }}
                                     </h6>
+                                    {% endif %}
+                                    {% if painting.designer != None %}
                                     <h6>
                                         Designer: {{ painting.designer }}
                                     </h6>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -123,6 +134,28 @@
             </div>
         </div>
     </div>
-
 </div>
+<div class="arrow-up">
+    <span class="icon">
+        <i class="fas fa-sort-up"></i>
+    </span>
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+<script>
+    $(function () {
+        var $win = $(window);
+        $win.scroll(function () {
+            if ($win.scrollTop() == 0)
+                $('.arrow-up').fadeOut(1000);
+            else {
+                $('.arrow-up').css('display', 'block');
+                $('.icon').click(function (e) {
+                    window.scrollTo(0, 0)
+                })
+            }
+        });
+    });
+</script>
 {% endblock %}
