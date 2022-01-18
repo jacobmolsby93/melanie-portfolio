@@ -41,26 +41,23 @@
       </form>
     </div>
   </div>
-  <div class="row d-flex align-items-center">
-    <div class="col-11 col-md-6 d-flex justify-content-center">
-      <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered delete-modal">
-          <div class="modal-content delete-modal">
-            <div class="modal-header">
-              <h5 class="modal-title" id="deleteModalLabel">Delete Image -  {{ image.name }}</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              Are you sure you want to delete the image - {{ image.name }}
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <a href="{% url 'delete_image' image.id %}" class="btn btn-danger">Delete</a>
-            </div>
-          </div>
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered delete-modal">
+      <div class="modal-content delete-modal">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Delete Image - {{ image.name }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete the image - {{ image.name }}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <a href="{% url 'delete_image' image.id %}" class="btn btn-danger">Delete</a>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 {% endblock %}

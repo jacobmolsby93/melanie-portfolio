@@ -59,7 +59,6 @@ def paint_portfolio(request):
     return render(request, template_name, context)
 
 
-
 def about(request):
     """
     A view to display the about page
@@ -70,6 +69,7 @@ def about(request):
 
     }
     return render(request, template_name, context)
+
 
 def site_management(request):
     """
@@ -88,6 +88,7 @@ def site_management(request):
 
 # Views for normal photos
 
+
 @login_required
 def delete_image(request, image_id):
     """
@@ -101,6 +102,7 @@ def delete_image(request, image_id):
     image.delete()
     messages.success(request, 'Image deleted!')
     return redirect(reverse('portfolio'))
+
 
 def add_image(request):
     """
@@ -160,6 +162,7 @@ def edit_image(request, image_id):
 
 # Views for body paint images.
 
+
 def add_painting(request):
     """
     A view for adding images to the gallery
@@ -173,7 +176,7 @@ def add_painting(request):
         if form.is_valid():
             painting = form.save()
             messages.success(request, 'Successfully added Image!')
-            return redirect(reverse('home'))
+            return redirect(reverse('portfolio2'))
         else:
             messages.error(request, 'Failed to add Image. Please ensure the form is valid')
     else:
@@ -196,7 +199,7 @@ def delete_painting(request, painting_id):
     painting = get_object_or_404(PaintingImage, pk=painting_id)
     painting.delete()
     messages.success(request, 'Image deleted!')
-    return redirect(reverse('home'))
+    return redirect(reverse('portfolio2'))
 
 
 @login_required

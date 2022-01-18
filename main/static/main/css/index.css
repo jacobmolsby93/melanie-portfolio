@@ -122,9 +122,11 @@
     display: inline-block;
 }
 
-#gallery > div:nth-child(1) {
+#gallery > div:nth-child(1),
+#gallery2 > div:nth-child(1) {
     margin-top: 0 !important;
 }
+
 
 
 

@@ -8,6 +8,7 @@ urlpatterns = [
     path('add_image/', views.add_image, name='add_image'),
     path('add_painting/', views.add_painting, name='add_painting'),
     path('image/<int:image_id>/', views.delete_image, name="delete_image"),
+    path('painting/<int:painting_id>/', views.delete_painting, name="delete_painting"),
     path('edit_image/<int:image_id>/', views.edit_image, name="edit_image"),
     path('edit_painting/<int:painting_id>/', views.edit_painting, name="edit_painting"),
     path('portfolio/', views.portfolio, name='portfolio'),
