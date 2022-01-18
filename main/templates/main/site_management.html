@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'main/css/index.css' %}">
+{% endblock %}
+
+{% block page_header %}
+{% include 'includes/page_header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="spacer"></div>
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-11 col-md-6">
+            <hr>
+            <h2 class="logo-font mb-4">Site Management</h2>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-11 col-md-6 edit-col">
+            <div class="row">
+                <div class="col-6">
+                    <a class="btn btn-success" href="{% url 'add_image' %}">Add An Image</a>
+                </div>
+                <div class="col-6">
+                    <a class="btn btn-success" href="{% url 'add_painting' %}">Add Painting Image</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center justify-content-md-start mt-5">
+        {% for image in images %}
+        <div class="col-11 col-md-6 d-flex justify-content-md-end mt-3">
+            <img class="edit_page_img" src="{{ image.image.url }}" alt="">
+        </div>
+        <div class="col-11 col-md-4 ms-2 mt-3">
+            <p>{{ image.name }} <a class="text-success" href="{% url 'edit_image' image.id%}">Edit</a> <a
+                    class="text-danger" href="">Delete</a></p>
+        </div>
+        {% endfor %}
+        {% for painting in paintings %}
+        <div class="col-11 col-md-6 d-flex justify-content-md-end mt-3">
+            <img class="edit_page_img" src="{{ painting.image.url }}" alt="">
+        </div>
+        <div class="col-11 col-md-4 ms-2 mt-3">
+            <p>{{ painting.name }} <a class="text-success" href="{% url 'edit_painting' painting.id%}">Edit</a> <a
+                    class="text-danger" href="">Delete</a></p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="spacer"></div>
+{% endblock %}

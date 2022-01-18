@@ -21,9 +21,11 @@
                         <li class="list-item">
                             <a class="landing-link" href="{% url 'about' %}">Bio/Contact</a>
                         </li>
+                        {% if user.is_superuser %}
                         <li class="list-item">
-                            <a class="landing-link" href="#">Share</a>
+                            <a class="landing-link" href="{% url 'site_management' %}">Site Management</a>
                         </li>
+                        {% endif %}
                         <li class="list-item">
                             <a class="landing-icon" href="https://www.instagram.com/makeupby_melanierieder/"
                                 target="_blank"><i class="fab fa-instagram"></i></a>

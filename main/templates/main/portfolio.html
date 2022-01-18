@@ -27,28 +27,110 @@
     <div class="row d-flex justify-content-center">
         <div class="col-10 d-flex justify-content-center">
             <ul class="list-inline list-unstyled">
+                <li class="list-inline-item">
+                    <a class="portfolio-link active" href="{% url 'portfolio' %}">Fashion</a>
+                </li>
                 {% if on_page %}
                 <li class="list-inline-item">
-                    <a class="portfolio-link" href="{% url 'portfolio2' %}">Beauty</a>
+                    <a class="portfolio-link" href="{% url 'portfolio2' %}">Beauty Paintings</a>
+                </li>
+                {% endif %}
+                {% if user.is_superuser %}
+                <li class="list-inline-item">
+                    <a class="portfolio-link" href="{% url 'add_image' %}">Add image</a>
                 </li>
                 {% endif %}
             </ul>
         </div>
     </div>
     <div class="container-fluid">
-        <div class="row gallery-row d-flex justify-content-center">
-            <section id="gallery">
+        <div class="row gallery-row">
+            <section id="gallery" class="container-fluid">
                 {% for image in images %}
                 {% if user.is_superuser %}
-                <a href="#"><img src="{{ image.image.url }}" alt="{{ item.alt }}"></a>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <a href="{% url 'edit_image' image.id %}">
+                                <img class="card-img" src="{{ image.image.url }}" alt="{{ image.alt }}}">
+                            
+                            <div class="overlay">
+                                <h3 class="card-title mt-4 ms-4">Info</h3>
+                                <div class="card-body content">
+                                    <h6>
+                                        Model: {{ image.model }}
+                                    </h6>
+                                    <h6>
+                                        Photographer: {{ image.photographer }}
+                                    </h6>
+                                    <h6>
+                                        Designer: {{ image.designer }}
+                                    </h6>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 {% else %}
-                <img src="{{ image.image.url }}" alt="{{ image.alt }}">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <img class="card-img" src="{{ image.image.url }}" alt="{{ image.alt }}}">
+                            <div class="overlay">
+                                <h3 class="card-title mt-4 ms-4">Info</h3>
+                                <div class="card-body content">
+                                    <h6>
+                                        Model: {{ image.model }}
+                                    </h6>
+                                    <h6>
+                                        Photographer: {{ image.photographer }}
+                                    </h6>
+                                    <h6>
+                                        Designer: {{ image.designer }}
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 {% endif %}
-                <div class="row"></div>
                 {% endfor %}
             </section>
+        </div>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center mt-2 mt-md-5">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        {% if images.has_previous %}
+                        <li class="page-item"><a class="page-link"
+                                href="?page={{ images.previous_page_number }}">Previous</a></li>
+                        {% endif %}
+
+                        {% if images.paginator.num_pages == 1 %}
+
+                        {% else %}
+                        <li class="page-item active" aria-current="page">
+                            <p class="page-link">{{ images.number }} of {{ images.paginator.num_pages }}</p>
+                        </li>
+                        {% endif %}
+                        {% if images.has_next %}
+                        <li class="page-item"><a class="page-link" href="?page={{ images.next_page_number }}">Next</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
         </div>
     </div>
 
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+<script>
+    $('#gallery-img').hover(function () {
+        $(this).wrap('<div class="overlay"><div class="content"></div></div>')
+    })
+</script>
 {% endblock %}

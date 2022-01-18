@@ -61,6 +61,8 @@ INSTALLED_APPS = [
     
 ]
 
+SITE_ID = 1
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 

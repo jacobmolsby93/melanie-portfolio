@@ -32,21 +32,95 @@
                     <a class="portfolio-link" href="{% url 'portfolio' %}">Fashion</a>
                 </li>
                 {% endif %}
+                <li class="list-inline-item">
+                    <a class="portfolio-link active" href="{% url 'portfolio2' %}">Beauty Paintings</a>
+                </li>
+                {% if user.is_superuser %}
+                <li class="list-inline-item">
+                    <a class="portfolio-link" href="{% url 'add_painting' %}">Add image</a>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </div>
     <div class="container-fluid">
-        <div class="row gallery-row d-flex justify-content-center">
-            <section id="gallery">
+        <div class="row gallery-row mt-3">
+            <section id="gallery2">
                 {% for painting in paintings %}
                 {% if user.is_superuser %}
-                <a href="#"><img src="{{ painting.image.url }}" alt="{{ painting.alt }}"></a>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <a href="{% url 'edit_painting' painting.id %}">
+                                <img class="card-img card-img-paint" src="{{ painting.image.url }}" alt="{{ painting.alt }}}">
+
+                                <div class="overlay">
+                                    <h3 class="card-title mt-4 ms-4">Info</h3>
+                                    <div class="card-body content">
+                                        <h6>
+                                            Model: {{ painting.model }}
+                                        </h6>
+                                        <h6>
+                                            Photographer: {{ painting.photographer }}
+                                        </h6>
+                                        <h6>
+                                            Designer: {{ painting.designer }}
+                                        </h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 {% else %}
-                <img src="{{ painting.image.url }}" alt="{{ painting.alt }}">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <img class="card-img card-img-paint" src="{{ painting.image.url }}" alt="{{ painting.alt }}}">
+                            <div class="overlay">
+                                <h3 class="card-title mt-4 ms-4">Info</h3>
+                                <div class="card-body content">
+                                    <h6>
+                                        Model: {{ painting.model }}
+                                    </h6>
+                                    <h6>
+                                        Photographer: {{ painting.photographer }}
+                                    </h6>
+                                    <h6>
+                                        Designer: {{ painting.designer }}
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 {% endif %}
-                <div class="row"></div>
                 {% endfor %}
             </section>
+        </div>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center mt-2 mt-md-5">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        {% if paintings.has_previous %}
+                        <li class="page-item"><a class="page-link"
+                                href="?page={{ paintings.previous_page_number }}">Previous</a></li>
+                        {% endif %}
+
+                        {% if paintings.paginator.num_pages == 1 %}
+
+                        {% else %}
+                        <li class="page-item active" aria-current="page">
+                            <p class="page-link">{{ paintings.number}} of {{ paintings.paginator.num_pages }}</p>
+                        </li>
+                        {% endif %}
+                        {% if paintings.has_next %}
+                        <li class="page-item"><a class="page-link"
+                                href="?page={{ paintings.next_page_number }}">Next</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
         </div>
     </div>
 

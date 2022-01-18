@@ -1,7 +1,7 @@
 .background-img {
     position: absolute;
     top: 0;
-    left:0;
+    left: 0;
     right: 0;
     bottom: 0;
     background: url('/media/landing-image.jpeg') no-repeat center center;
@@ -14,7 +14,7 @@
 .background-img-mobile {
     position: absolute;
     top: 0;
-    left:0;
+    left: 0;
     right: 0;
     bottom: 0;
     background: url('/media/mobile-landing.png') no-repeat center center;
@@ -57,6 +57,20 @@
     margin-top: 10%;
 }
 
+#shareLink {
+    border: 0;
+    background-color: transparent;
+    margin-left: 0;
+    padding-left: 0;
+    border-bottom: 2px solid #000;
+}
+
+.dropdown-menu {
+    border: 1px solid rgb(0, 0, 0);
+    background-color: rgb(226, 211, 206);
+    border-radius: 0px;
+}
+
 /* Navbar */
 
 .navbar {
@@ -69,11 +83,11 @@
 }
 
 .navbar-light {
-    background-color:rgba(255, 255, 255, 0.5) !important;
+    background-color: rgba(255, 255, 255, 0.5) !important;
 }
 
 .hamburger-icon {
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     border: 0;
 }
 
@@ -128,54 +142,223 @@
     position: relative;
     color: #fff;
     padding: 10px;
-    background-color: rgba(0,0,0, .6);
+    background-color: rgba(0, 0, 0, .6);
     border-radius: 3px;
 }
 
 /* gallery */
 
-#gallery {
+#gallery,
+#gallery2,
+.card {
     clear: both;
-    line-height: 0px;
     column-count: 2;
-    column-gap: 15px;
+    line-height: 0px;
     position: relative;
+    margin-bottom: 15px;
 }
 
 .gallery-row {
     padding-left: 250px;
     padding-right: 250px;
+    display: block;
 }
 
-
-#gallery>a>img {
+#gallery>a>.card-img,
+#gallery2>a>img {
     width: 100%;
     height: auto;
     margin-top: 15px;
 }
 
-#gallery>img {
+#gallery>.card-img,
+#gallery2>img {
     width: 100%;
     height: auto;
     margin-top: 15px;
 }
+
+.card-img-paint {
+    max-height: 635px;
+}
+
 
 .portfolio-link {
     color: #000;
-    font-size: 1.3rem;
+    font-size: 1rem;
     text-decoration: none;
+    border: 2px solid #000;
     transition: .6s;
-    padding: 5px;
+    padding: 3px;
     background-color: #f5f5f5;
     border-radius: 2px;
 }
 
 .portfolio-link:hover {
     color: #fff;
-    background-color: rgba(22, 21, 21, 0.8);
+    background-color: #000
+}
+
+.portfolio-link.active {
+    color: #fff;
+    background-color: #000;
+}
+
+/* Gallery img overlay */
+
+.card-title,
+.content {
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.card,
+.card-img {
+    border: 0;
+    border-radius: 0;
+}
+
+.content {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    transition: .9s ease;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .6s ease;
+    background: rgba(22, 22, 22, 0.4);
+}
+
+.card:hover .overlay {
+    opacity: 1;
 }
 
 
+/* Gallery nav */
+.page-link,
+.page-item .active {
+    border: 2px solid black !important;
+    color: black !important;
+    background-color: white !important;
+    border-radius: 0 !important;
+    transition: .6s;
+}
+
+.page-link {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.page-link:hover {
+    border: 2px solid #817e7e !important;
+    color: #817e7e !important;
+}
+
+.page-link:hover,
+.page-link:focus,
+.page-link:active {
+    outline: none !important;
+    box-shadow: none !important;
+    -webkit-appearance: none;
+}
+
+/* site_management */
+
+.edit_page_img {
+    width: 150px;
+    height: 200px;
+}
+
+input#id_image {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#exampleModal {
+    height: 300px;
+    width: 600px;
+    position: absolute;
+    right: 0;
+}
+
+.delete-modal {
+    height: 200px;
+    width: 300px;
+
+}
+
+/* About page */
+
+.about-spacer {
+    height: 70px;
+}
+
+.name {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.pink {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #DAA7A7;
+}
+
+.about-text {
+    letter-spacing: 1px;
+    color: #232323;
+}
+
+.about-container {
+    position: relative;
+}
+
+.background-splash {
+    background: url('/media/black-splash-desktop.png') no-repeat center center;
+    background-size: contain;
+    opacity: .1;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+
+.mobile {
+    background: url('/media/black-splash.png') center center;
+    background-size: contain;
+    opacity: .1;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height:100%;
+    width: 100%;
+    z-index: -1;
+}
+
+.footer-link {
+    font-size: 2rem;
+    color: #000;
+    text-decoration: none;
+    transition: .6s;
+}
+
+.footer-link:hover {
+    color: #666666;
+}
 
 /* Media */
 
@@ -189,6 +372,10 @@
     .gallery-row {
         padding-left: 0;
         padding-right: 0;
+    }
+
+    .footer-link {
+        font-size: 1.2rem;
     }
 }
 
