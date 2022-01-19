@@ -122,11 +122,14 @@
     display: inline-block;
 }
 
-#gallery > div:nth-child(1),
-#gallery2 > div:nth-child(1) {
+#gallery>div:nth-child(1),
+#gallery2>div:nth-child(1) {
     margin-top: 0 !important;
 }
 
+@media screen and (max-width: 576px) {
+    
+}
 
 
 
@@ -335,12 +338,12 @@ input#id_image {
         height: 300px;
         width: 300px;
     }
-    
+
     .delete-modal {
         height: 200px;
         width: 300px;
     }
-    
+
 }
 
 @media screen and (max-width: 575px) {
