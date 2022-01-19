@@ -5,13 +5,13 @@
             <h5 class="d-block d-sm-none mb-0 opacity-1">MELANIE RIEDER</h5>
         </a>
         <!-- Button trigger modal -->
-        <button type="button" class="me-2 hamburger-icon" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        <button id="modal-button" type="button" class="me-2 hamburger-icon" data-bs-target="#headerModal">
             <img src="{{ MEDIA_URL }}hamburger-icon.png" style="height: 25px; width: 25px;" alt="">
         </button>
 </nav>
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="headerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="headerModalLabel" aria-hidden="true">
     <div class="modal-dialog  modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body d-flex align-items-center">
@@ -40,9 +40,14 @@
                     </nav>
                 </div>
             </div>
-            <div class="modal-footer">
-
-            </div>
         </div>
     </div>
 </div>
+
+{% block postloadjs %}
+<script>
+    $('#modal-button').click(function () {
+        $('#headerModal').modal('toggle');
+    })
+</script>
+{% endblock %}
