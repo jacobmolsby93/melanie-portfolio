@@ -40,8 +40,9 @@
             <img class="edit_page_img" src="{{ image.image.url }}" alt="">
         </div>
         <div class="col-11 col-md-4 ms-2 mt-3">
-            <p>{{ image.name }} <a class="text-success" href="{% url 'edit_image' image.id%}">Edit</a> <a
-                    class="text-danger" href="">Delete</a></p>
+            <p>{{ image.name }}
+                <a class="text-success" href="{% url 'edit_image' image.id%}">Edit</a>
+            </p>
         </div>
         {% endfor %}
         {% for painting in paintings %}
@@ -49,8 +50,9 @@
             <img class="edit_page_img" src="{{ painting.image.url }}" alt="">
         </div>
         <div class="col-11 col-md-4 ms-2 mt-3">
-            <p>{{ painting.name }} <a class="text-success" href="{% url 'edit_painting' painting.id%}">Edit</a> <a
-                    class="text-danger" href="">Delete</a></p>
+            <p>{{ painting.name }}
+                <a class="text-success" href="{% url 'edit_painting' painting.id%}">Edit</a>
+            </p>
         </div>
         {% endfor %}
     </div>

@@ -69,3 +69,20 @@
 .collapse-item:hover {
     color: rgba(61, 58, 58, 0.5);
 }
+
+/* Toasts */
+
+.message-container {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 99999999;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 2px;
+}
