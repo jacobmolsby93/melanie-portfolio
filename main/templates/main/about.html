@@ -13,17 +13,24 @@
 <div class="about-spacer"></div>
 <div class="container-fluid about-container">
     <div class="row d-flex justify-content-center">
-        <div class="col-11 col-md-6 d-flex justify-content-center">
-            <img src="{{ MEDIA_URL }}about-img-1.png" class="d-none d-lg-block" style="height: auto; width: 70%;"
-                alt="">
-            <img src="{{ MEDIA_URL }}about-img-1.png" class="d-block d-lg-none" style="height: 100%; width: 100%;"
-                alt="">
-        </div>
-        <div class="col-10 col-md-6 mt-5 mt-md-0">
-            <div class="col-10">
-                <img src="{{ MEDIA_URL }}about-img-3.png" style="height: 50%; width: 100%;" alt="">
+        <div class="col-8 col-md-6 d-none d-sm-block">
+            <div class="img-container-desktop d-flex justify-content-center">
+                <img id="desktopAbout" src="{{ MEDIA_URL }}about-img-1.png" style="height: auto; width: 100%;"
+                    alt="Picture of the makeup artist">
             </div>
-            <div class="col-10 d-flex justify-content-start align-items-center">
+        </div>
+        <div class="col-11 col-md-6 d-flex justify-content-center d-block d-sm-none">
+            <div class="img-container-mobile">
+                <img id="mobileAbout" src="{{ MEDIA_URL }}about-img-1.png" style="height: 100%; width: 100%;"
+                    alt="picture of the makeup artist">
+            </div>
+        </div>
+        <div class="col-11 col-md-6 pe-2 mt-5 mt-md-0">
+            <div class="col-12">
+                <img src="{{ MEDIA_URL }}about-img-3.png" style="height: 50%; width: 90%;"
+                    alt="a picture of a makeup brush">
+            </div>
+            <div class="col-12 col-md-10 d-flex justify-content-start align-items-center">
                 <div class="text-container">
                     <h1 class="name text-uppercase">Mehr über mich</h1>
                     <h1 class="pink">MAKEUP ARTIST</h1>
