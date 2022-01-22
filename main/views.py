@@ -27,8 +27,9 @@ def portfolio(request, page=1):
     images = Image.objects.all().order_by("-created_on")
     paginator = Paginator(images, 10)
     page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    
     try:
+        page_obj = paginator.get_page(page_number)
         images = paginator.page(page)
     except EmptyPage:
         images = paginator.page(page_obj)
