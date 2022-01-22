@@ -51,9 +51,9 @@
                 <div class="row mt-3">
                     <div class="col-md-12">
                         <div class="card">
+                            {% if image %}
                             <a href="{% url 'edit_image' image.id %}">
                                 <img class="card-img" src="{{ image.image.url }}" alt="{{ image.alt }}}">
-
                                 <div class="overlay">
                                     <h3 class="card-title mt-4 ms-4">Photo Info</h3>
                                     <div class="card-body content">
@@ -75,6 +75,7 @@
                                     </div>
                                 </div>
                             </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -82,6 +83,7 @@
                 <div class="row mt-3">
                     <div class="col-md-12">
                         <div class="card">
+                            {% if image %}
                             <img class="card-img" src="{{ image.image.url }}" alt="{{ image.alt }}}">
                             <div class="overlay">
                                 <h3 class="card-title mt-4 ms-4">Photo Info</h3>
@@ -103,6 +105,7 @@
                                     {% endif %}
                                 </div>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -113,7 +116,7 @@
         <div class="row">
             <div class="col-12 d-flex justify-content-center mt-2 mt-md-5">
                 <nav aria-label="Page navigation example">
-                    {% if is_page_number %}
+                    {% if is_paginator %}
                     <ul class="pagination">
                         {% if images.has_previous %}
                         <li class="page-item"><a class="page-link"

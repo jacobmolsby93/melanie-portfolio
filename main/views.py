@@ -30,7 +30,6 @@ def portfolio(request, page=1):
     
     try:
         page_obj = paginator.get_page(page_number)
-        images = paginator.page(page)
     except EmptyPage:
         images = paginator.page(page_obj)
 
