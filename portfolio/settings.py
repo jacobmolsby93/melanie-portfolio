@@ -26,11 +26,13 @@ DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = [
     'localhost',
+    'melanierieder.herokuapp.com',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-jacobmolsby93-melaniepor-t40xp862yg1.ws-us27.gitpod.io',
-    'https://8000-jacobmolsby93-melaniepor-t40xp862yg1.ws-eu27.gitpod.io'
+    'https://8000-jacobmolsby93-melaniepor-t40xp862yg1.ws-eu27.gitpod.io',
+    'https://www.melanierieder.herokuapp.com',
 ]
 
 CORS_ALLOW_CREDENTIALS = True
