@@ -46,7 +46,6 @@
     <div class="container-fluid">
         <div class="row gallery-row mt-3">
             <section id="gallery" class="container-fluid mt-3">
-                {% if images %}
                 {% for image in images %}
                 {% if user.is_superuser %}
                 <div class="row mt-3">
@@ -114,8 +113,8 @@
         <div class="row">
             <div class="col-12 d-flex justify-content-center mt-2 mt-md-5">
                 <nav aria-label="Page navigation example">
+                    {% if is_paginator %}
                     <ul class="pagination">
-                        {% if paginator %}
                         {% if images.has_previous %}
                         <li class="page-item"><a class="page-link"
                                 href="?page={{ images.previous_page_number }}">Previous</a></li>
@@ -132,10 +131,9 @@
                         <li class="page-item"><a class="page-link" href="?page={{ images.next_page_number }}">Next</a>
                         </li>
                         {% endif %}
-                        {% endif %}
                     </ul>
+                    {% endif %}
                 </nav>
-                {% endif %}
             </div>
         </div>
     </div>
