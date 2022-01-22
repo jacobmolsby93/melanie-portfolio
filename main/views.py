@@ -29,9 +29,9 @@ def portfolio(request, page=1):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     try:
-        images = paginator.page(paginator.num_pages)
+        images = paginator.page(page)
     except EmptyPage:
-        images = paginator.page(paginator.num_pages)
+        images = paginator.page(page_obj)
 
 
     template_name = 'main/portfolio.html'
