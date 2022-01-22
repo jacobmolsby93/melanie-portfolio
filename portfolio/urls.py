@@ -22,9 +22,9 @@ from django.conf.urls.static import static
 
 if 'DATABASE_URL' in os.environ:
     urlpatterns = [
-    path(f'{os.environ.get("ADMIN")}/', admin.site.urls),
-    path('', include('main.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+        path(f'{os.environ.get("ADMIN")}/', admin.site.urls),
+        path('', include('main.urls')),
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 else:
     urlpatterns = [
         path('admin/', admin.site.urls),
