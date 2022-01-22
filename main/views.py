@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -19,16 +19,20 @@ def index(request):
     return render(request, 'main/index.html')
 
 
-def portfolio(request):
+def portfolio(request, page=1):
     """
     A view to display the portfolio
     """
+    on_page = True
     images = Image.objects.all().order_by("-created_on")
-
     paginator = Paginator(images, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    on_page = True
+    try:
+        images = paginator.page(paginator.num_pages)
+    except EmptyPage:
+        images = paginator.page(paginator.num_pages)
+
 
     template_name = 'main/portfolio.html'
     context = {
