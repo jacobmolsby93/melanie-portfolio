@@ -34,7 +34,6 @@ def portfolio(request):
     context = {
         'on_page': on_page,
         'images': page_obj,
-
     }
     return render(request, template_name, context)
 

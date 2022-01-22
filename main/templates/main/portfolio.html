@@ -115,6 +115,7 @@
             <div class="col-12 d-flex justify-content-center mt-2 mt-md-5">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
+                        {% if page_number %}
                         {% if images.has_previous %}
                         <li class="page-item"><a class="page-link"
                                 href="?page={{ images.previous_page_number }}">Previous</a></li>
@@ -130,6 +131,7 @@
                         {% if images.has_next %}
                         <li class="page-item"><a class="page-link" href="?page={{ images.next_page_number }}">Next</a>
                         </li>
+                        {% endif %}
                         {% endif %}
                     </ul>
                 </nav>
