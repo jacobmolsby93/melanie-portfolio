@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = [
-    'makeupbymelanierider.com',
+    'makeupbymelanierieder.com',
     'www.makeupbymelanierieder.com',
     'melanierieder.herokuapp.com',
     'localhost',
@@ -33,7 +33,7 @@ ALLOWED_HOSTS = [
 
 CSRF_TRUSTED_ORIGINS = [
     'https://makeupbymelanierieder.com',
-    'https://www.makeupbymelanierider.com',
+    'https://www.makeupbymelanierieder.com',
     'https://www.melanierieder.herokuapp.com',
     'https://8000-jacobmolsby93-melaniepor-t40xp862yg1.ws-us27.gitpod.io',
     'https://8000-jacobmolsby93-melaniepor-t40xp862yg1.ws-eu27.gitpod.io',
