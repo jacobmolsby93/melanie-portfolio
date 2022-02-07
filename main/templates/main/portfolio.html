@@ -36,7 +36,11 @@
       <div class="gallery-container">
         {% for image in images %}
         <div class="grid-item">
+          {% if user.is_superuser %}
           <a href="{% url 'edit_image' image.id %}">
+            {% else %}
+            <span>
+              {% endif %}
             <img class="grid-img" src="{{ image.image.url }}" alt="">
             <div class="overlay overlay">
               <h3 class="title">Photo Info</h3>

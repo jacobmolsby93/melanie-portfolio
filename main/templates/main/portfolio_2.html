@@ -37,7 +37,11 @@
         <div class="gallery-container">
             {% for painting in paintings %}
             <div class="grid-item">
+            {% if user.is_superuser %}
               <a href="{% url 'edit_painting' painting.id %}">
+                {% else %}
+                <span>
+                {% endif %}
                 <img class="grid-img" src="{{ painting.image.url }}" alt="{{ painting.alt }}">
                 <div class="overlay overlay">
                   <h3 class="title">Photo Info</h3>
