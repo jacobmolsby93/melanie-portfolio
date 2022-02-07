@@ -120,7 +120,7 @@ def add_image(request):
         if form.is_valid():
             image = form.save()
             messages.success(request, 'Successfully added Image!')
-            return redirect(reverse('home'))
+            return redirect(reverse('portfolio'))
         else:
             messages.error(request, 'Failed to add Image. Please ensure the form is valid')
     else:

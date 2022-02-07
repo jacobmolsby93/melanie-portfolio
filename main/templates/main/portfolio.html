@@ -1,167 +1,109 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block extracss %}
-<link rel="stylesheet" href="{% static 'main/css/index.css' %}">
-{% endblock %}
-
-
-{% block page_header %}
-{% include 'includes/page_header.html' %}
-{% endblock %}
-
-
-{% block content %}
-<div class="portfolio-hero-img"></div>
+{% extends 'base.html' %} {% load static %} {% block extracss %}
+<link rel="stylesheet" href="{% static 'main/css/index.css' %}" />
+{% endblock %} {% block page_header %} {% include 'includes/page_header.html' %}
+{% endblock %} {% block content %}
+<div class="portfolio-hero-img">
+  <div class="title-container">
+    <h1 class="portfolio-title">PORTFOLIO</h1>
+  </div>
+</div>
 <div class="container-fluid">
-
-    <div class="container content-container d-flex justify-content-center">
-        <div class="row mt-auto">
-            <div class="col-12">
-                <h1 class="portfolio-title">PORTFOLIO</h1>
+  <div class="spacer"></div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-10 d-flex justify-content-center">
+      <ul class="list-inline list-unstyled">
+        <li class="list-inline-item">
+          <a class="portfolio-link active" href="{% url 'portfolio' %}"
+            >Fashion</a
+          >
+        </li>
+        {% if on_page %}
+        <li class="list-inline-item">
+          <a class="portfolio-link" href="{% url 'portfolio2' %}"
+            >Beauty Paintings</a
+          >
+        </li>
+        {% endif %} {% if user.is_superuser %}
+        <li class="list-inline-item">
+          <a class="portfolio-link" href="{% url 'add_image' %}">Add image</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <section id="gallery" class="container-fluid mt-3">
+      <div class="gallery-container">
+        {% for image in images %}
+        <div class="grid-item">
+          <a href="{% url 'edit_image' image.id %}">
+            <img class="grid-img" src="{{ image.image.url }}" alt="">
+            <div class="overlay overlay">
+              <h3 class="title">Photo Info</h3>
+              <div class="content">
+                {% if image.model != None %}
+                <h6>Model: {{ image.model }}</h6>
+                {% endif %} {% if image.photographer != None %}
+                <h6>Photographer: {{ image.photographer }}</h6>
+                {% endif %} {% if image.designer != None %}
+                <h6>Designer: {{ image.designer }}</h6>
+                {% endif %}
+              </div>
             </div>
+          </a>
         </div>
+        {% endfor %}
+      </div>
+    </section>
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center mt-2 mt-md-5">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            {% if images.has_previous %}
+            <li class="page-item">
+              <a
+                class="page-link"
+                href="?page={{ images.previous_page_number }}"
+                >Previous</a
+              >
+            </li>
+            {% endif %} {% if images.paginator.num_pages == 1 %} {% else %}
+            <li class="page-item active" aria-current="page">
+              <p class="page-link">
+                {{ images.number }} of {{ images.paginator.num_pages }}
+              </p>
+            </li>
+            {% endif %} {% if images.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ images.next_page_number }}"
+                >Next</a
+              >
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
     </div>
-
-    <div class="spacer"></div>
-    <div class="row d-flex justify-content-center">
-        <div class="col-10 d-flex justify-content-center">
-            <ul class="list-inline list-unstyled">
-                <li class="list-inline-item">
-                    <a class="portfolio-link active" href="{% url 'portfolio' %}">Fashion</a>
-                </li>
-                {% if on_page %}
-                <li class="list-inline-item">
-                    <a class="portfolio-link" href="{% url 'portfolio2' %}">Beauty Paintings</a>
-                </li>
-                {% endif %}
-                {% if user.is_superuser %}
-                <li class="list-inline-item">
-                    <a class="portfolio-link" href="{% url 'add_image' %}">Add image</a>
-                </li>
-                {% endif %}
-            </ul>
-        </div>
-    </div>
-    <div class="container-fluid">
-        <div class="row gallery-row mt-3">
-            <section id="gallery" class="container-fluid mt-3">
-                {% for image in images %}
-                {% if user.is_superuser %}
-                <div class="row mt-3">
-                    <div class="col-md-12">
-                        <div class="card">
-                            {% if image %}
-                            <a href="{% url 'edit_image' image.id %}">
-                                <img class="card-img" src="{{ image.image.url }}" alt="{{ image.alt }}}">
-                                <div class="overlay">
-                                    <h3 class="card-title mt-4 ms-4">Photo Info</h3>
-                                    <div class="card-body content">
-                                        {% if image.model != None %}
-                                        <h6>
-                                            Model: {{ image.model }}
-                                        </h6>
-                                        {% endif %}
-                                        {% if image.photographer != None %}
-                                        <h6>
-                                            Photographer: {{ image.photographer }}
-                                        </h6>
-                                        {% endif %}
-                                        {% if image.designer != None %}
-                                        <h6>
-                                            Designer: {{ image.designer }}
-                                        </h6>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </a>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-                {% else %}
-                <div class="row mt-3">
-                    <div class="col-md-12">
-                        <div class="card">
-                            {% if image %}
-                            <img class="card-img" src="{{ image.image.url }}" alt="{{ image.alt }}}">
-                            <div class="overlay">
-                                <h3 class="card-title mt-4 ms-4">Photo Info</h3>
-                                <div class="card-body content">
-                                    {% if painting.model != None %}
-                                    <h6>
-                                        Model: {{ painting.model }}
-                                    </h6>
-                                    {% endif %}
-                                    {% if painting.photographer != None %}
-                                    <h6>
-                                        Photographer: {{ painting.photographer }}
-                                    </h6>
-                                    {% endif %}
-                                    {% if painting.designer != None %}
-                                    <h6>
-                                        Designer: {{ painting.designer }}
-                                    </h6>
-                                    {% endif %}
-                                </div>
-                            </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
-                {% endfor %}
-            </section>
-        </div>
-        <div class="row">
-            <div class="col-12 d-flex justify-content-center mt-2 mt-md-5">
-                <nav aria-label="Page navigation example">
-                    {% if main_image %}
-                    <ul class="pagination">
-                        {% if images.has_previous %}
-                        <li class="page-item"><a class="page-link"
-                                href="?page={{ images.previous_page_number }}">Previous</a></li>
-                        {% endif %}
-
-                        {% if images.paginator.num_pages == 1 %}
-
-                        {% else %}
-                        <li class="page-item active" aria-current="page">
-                            <p class="page-link">{{ images.number }} of {{ images.paginator.num_pages }}</p>
-                        </li>
-                        {% endif %}
-                        {% if images.has_next %}
-                        <li class="page-item"><a class="page-link" href="?page={{ images.next_page_number }}">Next</a>
-                        </li>
-                        {% endif %}
-                    </ul>
-                    {% endif %}
-                </nav>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>
 <div class="arrow-up">
-    <span class="icon">
-        <i class="fas fa-sort-up"></i>
-    </span>
+  <span class="icon">
+    <i class="fas fa-sort-up"></i>
+  </span>
 </div>
-{% endblock %}
-
-{% block postloadjs %}
+{% endblock %} {% block postloadjs %}
 <script>
-    $(function () {
-        var $win = $(window);
-        $win.scroll(function () {
-            if ($win.scrollTop() == 0)
-                $('.arrow-up').fadeOut(1000);
-            else {
-                $('.arrow-up').css('display', 'block');
-                $('.icon').click(function (e) {
-                    window.scrollTo(0, 0)
-                })
-            }
+  $(function () {
+    var $win = $(window);
+    $win.scroll(function () {
+      if ($win.scrollTop() == 0) $(".arrow-up").fadeOut(1000);
+      else {
+        $(".arrow-up").css("display", "block");
+        $(".icon").click(function (e) {
+          window.scrollTo(0, 0);
         });
+      }
     });
+  });
 </script>
 {% endblock %}

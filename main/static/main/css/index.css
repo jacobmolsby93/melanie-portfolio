@@ -25,11 +25,12 @@
 }
 
 .portfolio-hero-img {
-    position: absolute;
+    position: relative;
     background: url('/media/portfolio-hero-img.jpeg') no-repeat center center;
     background-size: cover;
-    width: 100vw;
-    height: 70vh;
+    width: 100%;
+    height: 500px;
+    min-height: 500px;
 }
 
 
@@ -82,12 +83,18 @@
 
 /* Portfolio */
 
-.content-container {
-    height: 70vh;
+.title-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }
 
 .portfolio-title {
-    position: relative;
+    width: 250px;
     color: #fff;
     padding: 10px;
     background-color: rgba(0, 0, 0, .6);
@@ -96,51 +103,37 @@
 
 /* gallery */
 
-#gallery,
-#gallery2,
-.card-img {
-    clear: both;
-    column-count: 2;
-    line-height: 0px;
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 10%;
+  }
+
+@media screen and (max-width: 768px) {
+    .gallery-container {
+        padding: 0 !important;
+    }
+}
+  
+
+  .grid-item {
+    height: 600px;
+    width: 450px;
     position: relative;
-}
-
-.gallery-row {
-    padding-left: 250px;
-    padding-right: 250px;
-    display: block;
-}
-
-#gallery>a>.card-img,
-#gallery2>a>img {
+    margin: 5px;
+  }
+  
+  
+  .grid-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
     width: 100%;
-    height: auto;
-    min-height: 100%;
-    margin-top: 15px;
-}
-
-#gallery>.card-img,
-#gallery2>img {
-    width: 100%;
-    height: auto;
-    min-height: 100%;
-    margin-top: 15px;
-}
-
-.card {
-    display: inline-block;
-}
-
-#gallery>div:nth-child(1),
-#gallery2>div:nth-child(1) {
-    margin-top: 0 !important;
-}
-
-@media screen and (max-width: 576px) {
-    
-}
-
-
+    object-fit: cover;
+  }
+  
 
 .portfolio-link {
     color: #000;
@@ -165,16 +158,15 @@
 
 /* Gallery img overlay */
 
-.card-title,
+.title {
+    margin-left: 20px;
+    margin-top: 20px;
+    color: #fff;
+}
+
 .content {
     color: #fff;
     letter-spacing: 1px;
-}
-
-.card,
-.card-img {
-    border: 0;
-    border-radius: 0;
 }
 
 .content {
@@ -197,7 +189,7 @@
     background: rgba(22, 22, 22, 0.4);
 }
 
-.card:hover .overlay {
+.grid-item:hover .overlay {
     opacity: 1;
 }
 

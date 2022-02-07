@@ -35,7 +35,7 @@ CSRF_TRUSTED_ORIGINS = [
     'https://makeupbymelanierieder.com',
     'https://www.makeupbymelanierieder.com',
     'https://www.melanierieder.herokuapp.com',
-    'https://8000-jacobmolsby93-melaniepor-t40xp862yg1.ws-us27.gitpod.io',
+    'https://8000-jacobmolsby93-melaniepor-t40xp862yg1.ws-us30.gitpod.io',
     'https://8000-jacobmolsby93-melaniepor-t40xp862yg1.ws-eu27.gitpod.io',
 ]
 
