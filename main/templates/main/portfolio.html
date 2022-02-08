@@ -1,6 +1,9 @@
 {% extends 'base.html' %} {% load static %} {% block extracss %}
 <link rel="stylesheet" href="{% static 'main/css/index.css' %}" />
-{% endblock %} {% block page_header %} {% include 'includes/page_header.html' %}
+{% endblock %}
+{% block extrajs %}
+{% endblock %}
+{% block page_header %} {% include 'includes/page_header.html' %}
 {% endblock %} {% block content %}
 <div class="portfolio-hero-img">
   <div class="title-container">
@@ -42,7 +45,8 @@
             <span>
               {% endif %}
             <img class="grid-img" src="{{ image.image.url }}" alt="">
-            <div class="overlay overlay">
+            <img class="touch-info d-block d-sm-none" src="{{MEDIA_URL}}tap.png" width="40px" height="auto" alt="">
+            <div class="overlay overlay-toggle" data-id="{{ image.id }}">
               <h3 class="title">Photo Info</h3>
               <div class="content">
                 {% if image.model != None %}
@@ -109,5 +113,12 @@
       }
     });
   });
+
+    if ($(window).width() < 576) {
+      $(".overlay-toggle").on("click", function() {
+        var id = $(this).data('id'); 
+        $(this).toggleClass('opacity')
+      })
+    }
 </script>
 {% endblock %}
